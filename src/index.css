@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white dark:bg-onyx text-onyx dark:text-gray-100 font-sans antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Editorial & Badminton Bento Court Styles
+   ────────────────────────────────────────────────────────────── */
+
+/* Premium editorial section title */
+.editorial-title {
+  @apply font-display italic font-medium tracking-tight;
+}
+
+/* The Bento Court Grid Borders */
+.bento-court {
+  @apply relative;
+}
+
+.bento-court::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid theme('colors.gray.200');
+  pointer-events: none;
+  z-index: 0;
+}
+.dark .bento-court::before {
+  border: 1px solid theme('colors.onyx.light');
+}
+
+/* Court dividing line */
+.court-divider {
+  position: relative;
+  height: 1px;
+  background: theme('colors.gray.200');
+  width: 100%;
+}
+.dark .court-divider {
+  background: theme('colors.onyx.light');
+}
+.court-divider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background-color: theme('colors.optic.green');
+}
+
+/* Editorial Glass Card with Subtle Court Glow */
+.editorial-card {
+  @apply bg-white/50 dark:bg-onyx-light/30 backdrop-blur-md border border-gray-100 dark:border-onyx-light/50 transition-all duration-500 relative z-10;
+}
+.editorial-card:hover {
+  @apply border-optic-green/30 shadow-[0_0_20px_rgba(16,185,129,0.05)];
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-onyx-light;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-optic-green;
+}
+
+/* ── Selection highlight ── */
+::selection {
+  @apply bg-optic-green/20 text-optic-green;
+}

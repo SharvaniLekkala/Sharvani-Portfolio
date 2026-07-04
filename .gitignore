@@ -1,0 +1,8 @@
+node_modules/
+/dist/
+/.pnp
+.pnp.js
+.env
+.idea/
+.vscode/
+*.log
