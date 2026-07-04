@@ -29,12 +29,14 @@ const Navbar: React.FC = () => {
 
   // Handle smooth scroll for hash links on the home page
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
-    if (location.pathname !== '/') {
-      // If we're not on home page, let the router handle it (we'll need a Link to '/#hash')
-      return;
-    }
-    
     if (hash.startsWith('#')) {
+      if (location.pathname !== '/') {
+        // On non-home pages, navigate to home with hash and close menu
+        e.preventDefault();
+        setMobileMenuOpen(false);
+        window.location.href = `${import.meta.env.BASE_URL}${hash}`;
+        return;
+      }
       e.preventDefault();
       const element = document.getElementById(hash.substring(1));
       if (element) {
